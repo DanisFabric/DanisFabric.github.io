@@ -1,34 +1,284 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang="en">
 
-include mixins
+<!-- Head tag -->
+<head>
 
-block site_title
-    != page.title + " · " + config.title
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-block description
-    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
-    meta(name="description", content=desc)
+    <!--Description-->
+    
+        <meta name="description" content="分布式共识中心化系统大家都信任中心化数据库的数据，分布式系统每人都有自己的数据库，那么首先要解决的就是应该相信谁的问题，也就是共识。
+分布式共识协议: 在有n个节点的系统中，每一个节点都有一个输入值，其中一些节点具有故障。分布式共识协议具有以下两个属性:
 
-block content
-  .autopagerize_page_element: .content: .post-page
-    include mixins
-    +make_post(page, true)
-    .share
-      .evernote
-        a.fa.fa-bookmark(href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();", ref="nofollow", target="_blank")
-      .weibo
-        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
-      .twitter
-        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
-    - var prev = page.prev ? page.prev.path : false;
-    - var next = page.next ? page.next.path : false;
-    .pagination
-      ul.clearfix
-        if prev
-          li.pre.pagbuttons
-            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
-        if next
-          li.next.pagbuttons
-            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
-    if page.comments
-        include partial/comments
+输入值的终止经由所有诚实节点来确定
+这个输">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Danis">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="区块链读书笔记第二章"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Danisfabric"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>区块链读书笔记第二章 - Danisfabric</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>区块链读书笔记第二章</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-01-23
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="分布式共识"><a href="#分布式共识" class="headerlink" title="分布式共识"></a>分布式共识</h2><p>中心化系统大家都信任中心化数据库的数据，分布式系统每人都有自己的数据库，那么首先要解决的就是应该相信谁的问题，也就是共识。</p>
+<p>分布式共识协议: 在有n个节点的系统中，每一个节点都有一个输入值，其中一些节点具有故障。分布式共识协议具有以下两个属性:</p>
+<ol>
+<li>输入值的终止经由所有诚实节点来确定</li>
+<li>这个输入值必须由诚实节点来生成</li>
+</ol>
+<p>交易A发生，在不同节点可能有这个交易也可能没有，如果一个节点获取打包权，并且此时它的交易池里面没有交易A，他照样打包。交易A将在之后的打包中被打入区块。</p>
+<p>区块链是通过奖励机制和随机性，在货币领域实现了分布式共识。</p>
+<h3 id="奖励机制和工作量证明"><a href="#奖励机制和工作量证明" class="headerlink" title="奖励机制和工作量证明"></a>奖励机制和工作量证明</h3><p>给与表现诚实的节点奖励</p>
+<h4 id="区块奖励"><a href="#区块奖励" class="headerlink" title="区块奖励"></a>区块奖励</h4><p>创造区块的节点可以在这个区块中加入一笔特别的交易，创造一笔交易赋予某地址一定数量的比特币作为奖励。这就是节点在共识链上进行创建区块服务的报酬。</p>
+<p>一个节点想获取打包的节点的奖励，那么就希望节点打包的区块被纳入共识链。如果节点打包区块内部有造假交易，没有被纳入共识链。那么这个节点打包的奖励也无法获得。这样就引导了大部分节点为了奖励，都成为诚实的节点。</p>
+<h4 id="交易费"><a href="#交易费" class="headerlink" title="交易费"></a>交易费</h4><p>交易制造者可以选择让输出值比输入值小，差额作为交易费。第一个创建区块把这笔交易放进区块链的节点获得此差额。</p>
+<h4 id="挖矿与工作量证明"><a href="#挖矿与工作量证明" class="headerlink" title="挖矿与工作量证明"></a>挖矿与工作量证明</h4><p>我们按照占有某种资源的比例来选取节点，假定这种资源是无法垄断的。<br>如果这种资源是计算能力，那么就是工作量证明(proof of work)(POW)<br>如果这种资源是某种币的拥有量，那么就是权益证明(proof of stake)(POS)</p>
+<p>比特币采用的是POW<br>POW 就是找到一个随机数满足特定哈希谜题</p>
+<p>这个哈希谜题有三个要求: </p>
+<ol>
+<li>难于计算：2014年底产生一个区块平均要做10的20次方次哈希运算</li>
+<li>可参数化成本：难度是可以通过参数进行调整</li>
+<li>易于证实：证明那个随机数是否正确十分简单。</li>
+</ol>
+<blockquote>
+<p>博弈论问题，大赞nash<br>每个节点都在充分考虑其他节点的潜在可能策略之后，制定自己策略，以期获得最大的回报。<br>所以问题是，矿工默认的诚实的行为是否达到纳什均衡。这个书上说还在研究</p>
+</blockquote>
+<p>关于双花和51%算力攻击问题，可以看这个回答<a href="https://zhuanlan.zhihu.com/p/25692826" target="_blank" rel="noopener">比特币是如何防范双花的</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 Danis<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

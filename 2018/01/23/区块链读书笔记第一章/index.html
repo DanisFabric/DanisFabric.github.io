@@ -1,34 +1,301 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang="en">
 
-include mixins
+<!-- Head tag -->
+<head>
 
-block site_title
-    != page.title + " · " + config.title
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-block description
-    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
-    meta(name="description", content=desc)
+    <!--Description-->
+    
+        <meta name="description" content="密码学是加密货币体系构建的基础。第一章主要讨论Hash函数和数字签名技术。
+1.1 哈希函数哈希函数具有以下三个特性:
 
-block content
-  .autopagerize_page_element: .content: .post-page
-    include mixins
-    +make_post(page, true)
-    .share
-      .evernote
-        a.fa.fa-bookmark(href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();", ref="nofollow", target="_blank")
-      .weibo
-        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
-      .twitter
-        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
-    - var prev = page.prev ? page.prev.path : false;
-    - var next = page.next ? page.next.path : false;
-    .pagination
-      ul.clearfix
-        if prev
-          li.pre.pagbuttons
-            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
-        if next
-          li.next.pagbuttons
-            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
-    if page.comments
-        include partial/comments
+输入可为任意大小字符串
+输出字符串长度固定
+时间复杂度为O(n)
+
+开发者对Hashtable肯定不会陌生，这是hash函数的用途之一。为了使hash函数达到密码安全，会要求以下">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Danis">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="区块链读书笔记第一章"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Danisfabric"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>区块链读书笔记第一章 - Danisfabric</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>区块链读书笔记第一章</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-01-23
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>密码学是加密货币体系构建的基础。第一章主要讨论<code>Hash函数</code>和<code>数字签名技术</code>。</p>
+<h2 id="1-1-哈希函数"><a href="#1-1-哈希函数" class="headerlink" title="1.1 哈希函数"></a>1.1 哈希函数</h2><p>哈希函数具有以下三个特性:</p>
+<ol>
+<li>输入可为任意大小字符串</li>
+<li>输出字符串长度固定</li>
+<li>时间复杂度为O(n)</li>
+</ol>
+<p>开发者对<code>Hashtable</code>肯定不会陌生，这是hash函数的用途之一。为了使hash函数达到密码安全，会要求以下三点附加特性：</p>
+<h3 id="碰撞阻力"><a href="#碰撞阻力" class="headerlink" title="碰撞阻力"></a>碰撞阻力</h3><p>对于哈希函数<code>H</code>, 无法找到两个值<code>x1``x2</code>, 使<code>H(x1) = H(x2)</code>。则认为<code>H()</code>具有碰撞阻力。</p>
+<p>无限的输入映射到有限的输出，因此所有的<code>哈希函数</code>都不具备碰撞阻力。<br>如果某些<code>哈希函数</code>我们无法找到行之有效的碰撞推测方法，所以我们选择相信其具有碰撞阻力。</p>
+<h3 id="隐秘性"><a href="#隐秘性" class="headerlink" title="隐秘性"></a>隐秘性</h3><p>如果我们知道哈希函数<code>y = H(x)</code>的结果<code>y</code>，而无法有效逆推出输入<code>x</code>，就表明此函数具有隐秘性。简单来说就是无法对此哈希函数进行逆运算。</p>
+<h3 id="谜题友好"><a href="#谜题友好" class="headerlink" title="谜题友好"></a>谜题友好</h3><p>如果我们知道哈希函数<code>y = H(x)</code>的结果<code>y</code>，假定在输入集合中，有一部分非常随机，那么很难求得对应输入<code>x</code>的值。</p>
+<blockquote>
+<p>可以看出谜题友好是对于有限的输入的情况。</p>
+</blockquote>
+<h3 id="特性总结"><a href="#特性总结" class="headerlink" title="特性总结"></a>特性总结</h3><p>安全哈希函数能够对任意输入进行信息摘要，并且计算高效。在有限的计算条件下无法被破解。</p>
+<h3 id="SHA-256-Secure-Hash-Algorithm-256"><a href="#SHA-256-Secure-Hash-Algorithm-256" class="headerlink" title="SHA-256 (Secure Hash Algorithm 256)"></a>SHA-256 (Secure Hash Algorithm 256)</h3><p><code>SHA-256</code>接收任意长度输入压缩成256位的输出。将任意长度压缩成固定长度。</p>
+<h2 id="1-2-哈希指针和数据结构"><a href="#1-2-哈希指针和数据结构" class="headerlink" title="1.2 哈希指针和数据结构"></a>1.2 哈希指针和数据结构</h2><p>普通指针提供数据存储的位置；哈希指针提供数据的存储位置并能校验数据是否被篡改过。</p>
+<h3 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h3><p>将普通链表的指针替换为哈希指针。就能对块的前一个块进行校验。</p>
+<p>保证头部块的哈希指针不能被改变，那么对后面区块的篡改最终无法实现。</p>
+<h3 id="梅克尔树-Merkle-trees"><a href="#梅克尔树-Merkle-trees" class="headerlink" title="梅克尔树 Merkle trees"></a>梅克尔树 Merkle trees</h3><p>使用哈希指针构造的二叉树。</p>
+<h3 id="隶属证明"><a href="#隶属证明" class="headerlink" title="隶属证明"></a>隶属证明</h3><p>查询某个节点是否隶属于梅克尔树，只用获取此节点到根的路径，进行哈希校验。时间和空间复杂度为log(N)。</p>
+<h2 id="1-3-数字签名"><a href="#1-3-数字签名" class="headerlink" title="1.3 数字签名"></a>1.3 数字签名</h2><p>数字签名有两个特点:</p>
+<ol>
+<li>有效签名可以通过验证</li>
+<li>签名不可伪造</li>
+</ol>
+<p>数字签名由三个算法构成:</p>
+<ol>
+<li>构造: 构造一对私钥和公钥</li>
+<li>签名: 将信息和私钥作为输入，进行签名，生成新的信息</li>
+<li>验证: 将一段信息与签名后的信息以及公钥一起作为输入进行校验，如果输出为true则表明签名属实。</li>
+</ol>
+<h3 id="椭圆曲线数字签名算法"><a href="#椭圆曲线数字签名算法" class="headerlink" title="椭圆曲线数字签名算法"></a>椭圆曲线数字签名算法</h3><p>此算法是比特币是用的数字签名算法。</p>
+<h3 id="公钥即身份"><a href="#公钥即身份" class="headerlink" title="公钥即身份"></a>公钥即身份</h3><p>将公钥视为身份的一个结果是，我们可以随时通过generateKeys生成新的身份。</p>
+<p>公钥私钥体系帮助我们构建一个去中心化的身份管理理念。我们可以自己作为用户注册，而无需到中央的机构注册用户。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本章大致讲了比特币使用到的基本的密码学原理，至少从密码学上证明其实安全可靠的。这里并未讲具体的密码实现算法。也不必深究。</p>
+<p>公钥对于身份的映射是去中心化的很重要的一点。这个是之前没注意到的。另外哈希链表和二叉树也很有趣，仅仅通过哈希的校验，就将原本的链表和二叉树扩展成了具有安全性放篡改的数据结构。厉害啊</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 Danis<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
